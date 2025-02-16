@@ -22,6 +22,17 @@ export default function Home() {
             word.length >= 3 && !word.includes("-") && !word.includes(" ")
         );
       randomWord.current = words[Math.floor(Math.random() * words.length)];
+      while (true) {
+        const res = await fetch(
+          "https://api.dictionaryapi.dev/api/v2/entries/en/" +
+            randomWord.current
+        );
+        if (res.status === 404) {
+          randomWord.current = words[Math.floor(Math.random() * words.length)];
+        } else {
+          break;
+        }
+      }
     });
     setFadeIn(true);
   }, []);

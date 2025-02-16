@@ -70,6 +70,20 @@ export default function Search() {
     getDefinition(search as string);
   }, [search]);
 
+  useEffect(() => {
+    if (!loading) {
+      document.title = `${(
+        (search as string).charAt(0).toUpperCase() + (search as string).slice(1)
+      ).replace(/%20/g, " ")} ~ Dictionary`;
+      document
+        .querySelector('meta[name="description"]')
+        ?.setAttribute(
+          "content",
+          definition.meanings[0].definitions[0].definition
+        );
+    }
+  }, [loading, search, definition]);
+
   return (
     <div
       className={`flex flex-col items-center justify-center h-screen transition-opacity ease-in duration-500 ${
