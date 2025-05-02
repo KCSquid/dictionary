@@ -86,21 +86,20 @@ export default function Search() {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center h-screen transition-opacity ease-in duration-500 ${
-        loading ? "opacity-0" : "opacity-100"
-      }`}
+      className={`flex flex-col items-center justify-center h-screen transition-opacity ease-in duration-500 ${loading ? "opacity-0" : "opacity-100"
+        }`}
     >
-      <div className="w-1/2 max-w-[512px] flex flex-col justify-center h-screen gap-8 break-words">
+      <div className="sm:w-1/2 w-3/4 sm:max-w-[512px] flex flex-col justify-center h-screen gap-8 break-words">
         {/* Word */}
         <div className="flex flex-col gap-2">
           <h1 className="font-bold text-5xl">
             {definition.phonetic == "/fɔːr əʊ fɔːr/"
               ? "404"
               : definition.meanings[0].definitions[0].definition.includes(
-                  "<br />"
-                )
-              ? "loading..."
-              : search}
+                "<br />"
+              )
+                ? "loading..."
+                : search}
           </h1>
           <h3 className="font-base text-lg">
             {definition.phonetic ? `[ ${definition.phonetic} ]` : ""}{" "}
